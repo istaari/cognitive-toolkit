@@ -3,7 +3,7 @@ name: euclidean-verification
 description: "Verify engineering claims against explicit requirements, premises, and observable evidence. Use before claiming a bug is fixed, a refactor is behavior-preserving, a design is correct, or a task is complete."
 metadata:
   collection: "greek-inspired-agent-skills"
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Euclidean Verification
@@ -35,9 +35,13 @@ Require an explicit evidence trail from requirements to conclusions, so a comple
 
 - A passing test supports only the behavior that test actually covers.
 - A test not run is not a passing test; a test blocked by the environment is not a pass.
+- **Write the check before the change when feasible.** An obligation that fails before the fix and passes after is stronger evidence than one written to match a change already made.
+- **When the specification is silent on an edge** (precedence, tie-breaks, unspecified inputs), a passing suite does not settle it. State the ambiguity and the behavior you chose rather than treating green tests as proof of correctness.
 - Do not claim formal proof unless formal methods actually establish the required property.
 - If a claim cannot be verified, narrow the claim or report the evidence gap.
 - For a refactor, check public interfaces, error behavior, side effects, data shape, and relevant performance or security constraints — not just whether the code compiles.
+
+Related: `pythagorean-invariant-checking` names the properties a change must preserve; this skill supplies the evidence that those — and every other completion claim — actually hold.
 
 ## Evidence ledger
 

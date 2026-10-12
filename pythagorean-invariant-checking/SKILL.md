@@ -3,7 +3,7 @@ name: pythagorean-invariant-checking
 description: "Identify and preserve critical behavior, data rules, interfaces, security properties, and other invariants during refactors, migrations, optimizations, or code changes."
 metadata:
   collection: "greek-inspired-agent-skills"
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Pythagorean Invariant Checking
@@ -41,6 +41,12 @@ Protect the properties that must remain true even when implementation details ch
 - **Performance:** latency or resource bounds, but only where a measurable requirement exists.
 
 Use only categories relevant to the task. Do not invent an invariant solely because it appears in this list.
+
+## Decision rules
+
+- **Check state after failure, not only the returned value.** Assert that rejected, invalid, and error paths leave usage counters, queues, caches, and ordering state unchanged — most invariant violations are invisible if you inspect only the happy-path return value.
+- Re-run invariant checks after each error path and boundary input, not just the success path.
+- Related: use `euclidean-verification` to turn each invariant into runnable evidence and to report which invariants remain unchecked.
 
 ## Invariant table
 

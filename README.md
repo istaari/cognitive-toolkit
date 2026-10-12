@@ -1,10 +1,17 @@
 # Greek-Inspired Agent Skills
 
-Ten small, composable skills that nudge a coding agent toward disciplined engineering habits: questioning a diagnosis before fixing it, shrinking a bug to its smallest reproduction, backing "it's done" with an actual check, and reaching for a script instead of a framework when a script is enough. Each skill is a single `SKILL.md` — when to use it, a procedure, guardrails, and a stopping condition — so a host loads the full instructions only when that skill is picked.
+Ten small skills help a coding agent work with discipline. Each skill does one job:
 
-The names borrow from Greek thinkers as memory hooks. They are modern adaptations, not anything the philosophers wrote about software. (The portraits below are artistic busts and engravings from Wikimedia Commons, not photographs of the people.)
+- Question a diagnosis before you fix it.
+- Reduce a bug to its smallest example.
+- Prove that work is done with a real test.
+- Choose a script before a framework.
 
-Nothing here is mandatory. A formatting fix needs none of these; a payment refactor might use five.
+Each skill is one `SKILL.md` file. The file states when to use the skill, the steps to follow, the limits, and when to stop. The agent loads the file only when it picks the skill.
+
+The names come from Greek thinkers. The names are memory hooks. These skills are modern adaptations. The Greek thinkers did not write about software. (The pictures are old busts from Wikimedia Commons.)
+
+No skill is mandatory. A small text fix needs no skill. A payment change can use five skills.
 
 ## The ten patterns
 
@@ -16,9 +23,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`socratic-debugging`** — Question the diagnosis before committing to a fix. Separate what you observed from what you assumed, list the explanations that compete with your first guess, and run the cheapest check that tells them apart.
+**`socratic-debugging`** — Question the diagnosis before you fix the bug. Separate the facts from the guesses. List the causes that compete with your first idea. Then run the cheapest test that tells the causes apart.
 
-**Example.** A token refresh keeps failing. Instead of patching the first theory, you line up token expiry, clock skew, overlapping refresh requests, and faulty rotation — then read the timestamps to see which one the evidence actually supports.
+**Example.** A token refresh fails. Do not fix the first idea. List four causes: token expiry, clock skew, two refreshes at the same time, and bad rotation. Read the timestamps. The timestamps show the true cause.
 
 </td>
 </tr>
@@ -30,9 +37,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`aristotelian-reasoning`** — Move from observation to a decision you can defend: collect the facts, classify the problem, map causes to predictions, weigh the options against your constraints, then verify.
+**`aristotelian-reasoning`** — Move from facts to a decision you can defend. Collect the facts. Classify the problem. Match each cause to a result you can see. Compare the options against your limits. Then verify.
 
-**Example.** An endpoint is slow. You measure database time, network delay, serialization, and algorithmic cost separately instead of guessing, optimize the one that dominates, and re-run the same workload to confirm.
+**Example.** An endpoint is slow. Measure four costs on their own: database time, network delay, serialization, and algorithm work. Fix the largest cost. Run the same test again to confirm.
 
 </td>
 </tr>
@@ -44,9 +51,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`euclidean-verification`** — Make "it works" mean something. Turn the claim into observable properties, attach each to a test, inspection, or measurement, and report what you actually checked versus what you are only inferring.
+**`euclidean-verification`** — Make the word "done" mean something. Turn the claim into properties you can see. Attach each property to a test, an inspection, or a measurement. Report what you tested and what you only think is true.
 
-**Example.** Before calling a refactor behavior-preserving, you list the public inputs, error cases, and token lifecycle it must keep, point each at a test or review, and flag anything left unverified.
+**Example.** You say a refactor keeps the same behavior. First list the inputs, the error cases, and the token lifecycle. Attach a test to each one. Report anything you did not test.
 
 </td>
 </tr>
@@ -58,9 +65,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`archimedean-decomposition`** — Break a big task into parts with real boundaries and their own acceptance criteria, then spend the effort most people skip: integration.
+**`archimedean-decomposition`** — Divide a large task into parts with clear edges. Give each part its own test. Then do the step that people usually skip: join the parts and test the whole.
 
-**Example.** Improving fifty skills at once — inventory them, agree on shared criteria, revise in small batches, validate each, and finish by checking links, naming, and overlap across the whole set.
+**Example.** You must improve fifty skills. List the skills. Agree on shared rules. Change the skills in small groups. Test each skill. Last, check the links, the names, and the overlaps across all skills.
 
 </td>
 </tr>
@@ -72,9 +79,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`platonic-quality-review`** — Trade vague praise ("clean", "robust") for criteria you can check. Define what good looks like for this specific artifact, score it point by point, and fix the gaps that matter most.
+**`platonic-quality-review`** — Replace vague words like "clean" with rules you can check. Write down what good means for this one artifact. Score the artifact against each rule. Fix the largest gaps first.
 
-**Example.** For a teaching skill you define good as accurate, actionable, progressive, and validated, then grade a real skill criterion by criterion instead of on vibes.
+**Example.** For a teaching skill, good means correct, clear, step-by-step, and tested. Score a real skill against each rule. Do not score on feeling.
 
 </td>
 </tr>
@@ -86,9 +93,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`pythagorean-invariant-checking`** — Name the properties that must survive a change, make them testable, and re-check every one afterward — not just whether the code compiles.
+**`pythagorean-invariant-checking`** — Name the properties that must stay true after a change. Make each property a test. Check every property after the change. Do not check only that the code compiles.
 
-**Example.** Refactoring a payment service, you hold the line on correct totals, no duplicate charges, and consistent transaction records, testing both the happy path and the retry path.
+**Example.** You refactor a payment service. Keep three rules true: the totals are correct, no charge repeats, and the records agree. Test the normal path and the retry path.
 
 </td>
 </tr>
@@ -100,9 +107,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`heraclitean-refinement`** — Make each iteration learn. Change one thing for a stated reason, measure against the baseline, and if it did not move the needle, change the hypothesis — not the same code again.
+**`heraclitean-refinement`** — Make each try learn something. Change one thing for a clear reason. Measure the result against the start. If the result does not improve, change the idea — not the same code again.
 
-**Example.** A test fails on a race condition. Instead of re-running the same tweak, you revise the diagnosis, add a concurrent-request reproduction, fix the rotation logic, and re-check.
+**Example.** A test fails because of a race condition. Do not repeat the same change. Change the diagnosis. Add a test with two requests at the same time. Fix the rotation. Check again.
 
 </td>
 </tr>
@@ -114,9 +121,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`stoic-control-filter`** — Sort blockers into what you control, what you partly influence, and what you cannot touch here. Act on the first, mitigate the second, and report the third honestly.
+**`stoic-control-filter`** — Sort the blockers into three groups: what you control, what you partly control, and what you cannot control here. Act on the first group. Reduce the second group. Report the third group clearly.
 
-**Example.** A remote API is down. You run the local tests and mocks you can, and say plainly that the live integration is still unverified rather than implying it passed.
+**Example.** A remote API is down. Run the local tests and the mocks that you can. Then say clearly that the live service is not verified.
 
 </td>
 </tr>
@@ -128,9 +135,9 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`epicurean-simplicity`** — Pick the simplest option that actually meets the requirements. Every abstraction has to name the need it serves.
+**`epicurean-simplicity`** — Choose the simplest option that meets the real needs. Every new part must name the need that it serves.
 
-**Example.** A one-off documentation transform gets a script and a checklist, not a multi-agent framework — you add orchestration only when scale or reliability demands it.
+**Example.** A one-time document change needs a script and a checklist. It does not need a multi-agent framework. Add more structure only when scale or safety needs it.
 
 </td>
 </tr>
@@ -142,40 +149,44 @@ Nothing here is mandatory. A formatting fix needs none of these; a payment refac
 </td>
 <td valign="top">
 
-**`democritean-reproduction`** — Shrink a messy failure to the smallest case that still breaks, keeping only the condition that triggers it, so both cause and fix are easy to see.
+**`democritean-reproduction`** — Reduce a messy bug to the smallest example that still fails. Keep only the condition that starts the bug. Now the cause and the fix are easy to see.
 
-**Example.** A flaky integration test collapses to two concurrent token-refresh requests with controlled state — the minimal case that reliably trips the race.
+**Example.** A flaky test reduces to two token-refresh requests at the same time, with fixed state. This small example starts the race every time.
 
 </td>
 </tr>
 </table>
 
-### And the coordinator
+### The coordinator
 
-**`greek-engineering-workflow`** is not an eleventh technique — it sequences the other ten for a full task and tells you which to skip. A typo fix might use none of them; a security-sensitive refactor might use most.
+**`greek-engineering-workflow`** is not an eleventh skill. It puts the other ten skills in order for a full task. It also tells you which skills to skip. A small fix can use no skill. A risky refactor can use most skills.
 
-## Using them together
+## One pass, end to end
 
-The examples above keep circling the same auth bug on purpose. Here is one disciplined pass at it, end to end:
+The examples above all use one bug on purpose. The diagram shows one disciplined pass through five skills. Most bugs need only two or three stages. The goal is not to run every stage. The goal is to not skip the stage that finds the bug.
 
-1. **Socratic** — don't trust the first explanation ("the access token expired"); list the alternatives, including a concurrency bug.
-2. **Democritean** — reduce the failure to two overlapping refresh requests with fixed token state. Now it fails every time, not just sometimes.
-3. **Euclidean** — state what the fix must prove ("rotation is safe under concurrent refresh") and decide what evidence counts.
-4. **Heraclitean** — fix the rotation, re-run the minimal case and the surrounding suite; if it still fails, revise the diagnosis instead of repeating the change.
-5. **Stoic** — if a dependency is unreachable, report what passed locally and what stayed unverified.
+![One debugging pass: Socratic, Democritean, Euclidean, Heraclitean, a decision loop, then Stoic.](assets/workflow-pass.svg)
 
-Most tasks need only two or three of these. The point is not to run all five — it is to not skip the one that would have caught the bug.
+1. **Socratic** — Do not trust the first cause. List the other causes. Include a concurrency bug.
+2. **Democritean** — Reduce the bug to two refresh requests at the same time. Now the bug happens every time.
+3. **Euclidean** — Write what the fix must prove. Decide what counts as evidence.
+4. **Heraclitean** — Fix the rotation. Run the small test and the full tests. If the test still fails, change the diagnosis.
+5. **Stoic** — If a service is down, report what passed and what is not verified.
 
 ## Where to start
 
-For a day-to-day debugging loop, four skills carry most of the weight:
+Four skills do most of the work in a daily debug loop:
 
-- **`socratic-debugging`** to challenge the first diagnosis,
-- **`democritean-reproduction`** to isolate the smallest failing case,
-- **`euclidean-verification`** to tie "done" to real checks, and
-- **`heraclitean-refinement`** to make each retry learn and to stop on an objective condition.
+- **`socratic-debugging`** — challenge the first diagnosis.
+- **`democritean-reproduction`** — find the smallest failing case.
+- **`euclidean-verification`** — tie "done" to real tests.
+- **`heraclitean-refinement`** — make each retry learn, and stop on a clear condition.
 
-Add **`pythagorean-invariant-checking`** for refactors, **`archimedean-decomposition`** for larger work, and **`stoic-control-filter`** when flaky networks, missing permissions, or unavailable services can block verification.
+Add more skills when the task needs them:
+
+- **`pythagorean-invariant-checking`** — for refactors.
+- **`archimedean-decomposition`** — for large tasks.
+- **`stoic-control-filter`** — when a network, a permission, or a service blocks the tests.
 
 ## Install
 
@@ -185,7 +196,7 @@ Add a skill with `npx`:
 npx skill <name>
 ```
 
-For example, the starter set, one per line:
+Install the starter set, one skill per line:
 
 ```bash
 npx skill socratic-debugging
@@ -194,6 +205,4 @@ npx skill euclidean-verification
 npx skill heraclitean-refinement
 ```
 
-Valid names are the ten patterns above plus `greek-engineering-workflow`.
-
-Prefer to do it by hand? A skill is just a directory with a `SKILL.md` inside — copy the ones you want into your host's skills location (for Claude Code, a project's `.claude/skills/`), keeping each directory intact.
+The valid names are the ten patterns above plus `greek-engineering-workflow`.

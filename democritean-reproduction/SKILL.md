@@ -3,7 +3,7 @@ name: democritean-reproduction
 description: "Isolate a bug, flaky test, integration failure, or surprising behavior by reducing it to the smallest reliable reproduction, testing a targeted fix, and then running broader regression checks."
 metadata:
   collection: "greek-inspired-agent-skills"
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Democritean Reproduction
@@ -37,6 +37,7 @@ Reduce a complicated failure to the smallest case that still demonstrates it, so
 
 - Do not reduce away the trigger condition just to produce a simpler but irrelevant example.
 - For concurrency or timing failures, retain the ordering or timing condition needed to reproduce them.
+- When the triggering input is unknown or boundary-related (zero, maximum, exact window/precision edges), reach for property-based or fuzz testing: a generator over the input space is mechanized reduction — it finds a failing case and shrinks it to a minimal one automatically.
 - If the failure cannot be reproduced reliably, report that limitation; use logs, traces, or repeated trials without claiming a deterministic reproduction.
 - A passing minimal case alone does not establish that the full system is correct.
 
